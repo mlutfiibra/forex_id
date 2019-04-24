@@ -11,17 +11,17 @@ const administrator = require('./routes/administrator')
 const accounts = require('./routes/accounts')
 const index = require('./routes/index')
 
-// const isAuth = require('./middleware/isAuth')
-// const isAdmin = require('./middleware/isAdmin')
+const isAuth = require('./middlewares/isAuth')
+const isAdministrator = require('./middlewares/isAdministrator')
 const mySession = {
     secret: 'isLoggedIn'
 }
 app.use(session(mySession))
 
-// app.use((req,res,next) => {
-//     app.locals.session = req.session
-//     next()
-// })
+app.use((req,res,next) => {
+    app.locals.session = req.session
+    next()
+})
 
 app.use('/public',express.static('./public'))
 
