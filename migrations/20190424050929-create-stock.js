@@ -14,10 +14,7 @@ module.exports = {
       alias: {
         type: Sequelize.STRING
       },
-      buy: {
-        type: Sequelize.INTEGER
-      },
-      sell: {
+      price: {
         type: Sequelize.INTEGER
       },
       createdAt: {

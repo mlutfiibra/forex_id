@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      accountNumber: {
+        type: Sequelize.INTEGER
+      },
       balance: {
         type: Sequelize.INTEGER
       },
