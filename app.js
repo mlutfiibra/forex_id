@@ -4,6 +4,13 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8235
 const routes = require('./routes')
 const session = require('express-session')
+//! router
+const users = require('./routes/users')
+const stocks = require('./routes/stocks')
+const stock_user = require('./routes/stock_user')
+const administrator = require('./routes/administrator')
+const accounts = require('./routes/accounts')
+const index = require('./routes/index')
 // const stocks = require('./routes/stocks')
 // const users = require('./routes/users')
 // const accounts = require('./routes/accounts')
@@ -29,6 +36,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs')
 
+//! handle router 
+app.use('/',index)
+app.use('/users',users)
+app.use('/stocks',stocks)
+app.use('/administrator',administrator)
+app.use('/accounts',accounts)
+app.use('/stock-user',stock_user)
 // app.use('/auth', auth)
 // app.use('/users', isAuth, upload.single('img_path'), users)
 // app.use('/admin', isAdmin, admin)
