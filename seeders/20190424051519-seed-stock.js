@@ -12,24 +12,30 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Stock', [
+    return queryInterface.bulkInsert('Stocks', [
       {
         name: 'Bank Mandiri',
         alias: 'BAM',
         buy: 500,
-        sell: 510
+        sell: 510,
+        createdAt: new Date,
+        updatedAt: new Date
       },
       {
         name: 'Bank BCA',
         alias: 'BCA',
         buy: 600,
-        sell: 610
+        sell: 610,
+        createdAt: new Date,
+        updatedAt: new Date
       },
       {
         name: 'PT. Indofood',
         alias: 'IDF',
         buy: 570,
-        sell: 590
+        sell: 590,
+        createdAt: new Date,
+        updatedAt: new Date
       }
     ], {});
   },
@@ -42,5 +48,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+    return queryInterface.bulkDelete('Stocks', null, {});
   }
 };

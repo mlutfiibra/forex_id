@@ -12,24 +12,30 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('User', [
+    return queryInterface.bulkInsert('Users', [
       {
         name: 'Admin',
         email: 'admin@forex.com',
         password: '1234',
-        role: 'Administrator'
+        role: 'Administrator',
+        createdAt: new Date,
+        updatedAt: new Date
       },
       {
         name: 'Dienul',
         email: 'dienul@forex.com',
         password: '1234',
-        role: 'Member'
+        role: 'Member',
+        createdAt: new Date,
+        updatedAt: new Date
       },
       {
         name: 'Lutfi',
         email: 'lutfi@forex.com',
         password: '1234',
-        role: 'Member'
+        role: 'Member',
+        createdAt: new Date,
+        updatedAt: new Date
       }
     ], {});
   },
@@ -42,6 +48,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('User', null, {});
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };

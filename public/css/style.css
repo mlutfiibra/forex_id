@@ -1,0 +1,51 @@
+.color-grey3{
+    color: #bdbdbd;
+}
+
+.card-margin {
+    margin: 25px 0px;
+}
+
+.color-grey4{
+    color: #616161;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.section-header {
+    color: #616161;
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 23px;
+}
+
+.mt-5{margin-top: 5px !important;}
+.mt-15 {margin-top: 15px;}
+.mt-25 {margin-top: 25px;}
+.mb-20 {margin-bottom: 20px;}
+
+.fs-15{font-size: 15px;}
+.fs-18{font-size: 18px;}
+
+.color-orange {color: #f47323}
+#mapid { height: 36em; width: 100%}
+
+.footer {
+    /* position: absolute; */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    border-top: solid 1px #bdbdbd;
+    background-color: #fff;
+    text-align: center;
+}
+
+.footer .content {
+    margin: 0px;
+    color: #616161;
+    font-weight: 500;
+    font-size: 13px;
+}
