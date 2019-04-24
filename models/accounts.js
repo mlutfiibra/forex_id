@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Accounts.associate = function(models) {
     // associations can be defined here
+    Accounts.belongsTo(models.User, {foreignKey: 'userId'})
   };
   return Accounts;
 };  

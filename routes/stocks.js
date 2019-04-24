@@ -1,22 +1,38 @@
 const express = require('express')
 const router = express.Router()
-const {accounts,Stock_User,Stock,User} = require('../models')
-
-router.get('/',(req,res)=>{
-  res.send('Halaman Stock')
-})
+const {Accounts,Stock_User,Stock,User} = require('../models')
 
 
-router.get('/', (req, res) => {
-  // res.send('Halaman User')
-  Stock.findAll()
-  .then(stocks=>{
-    res.send(stocks)
+router.get('/:id', (req, res) => {
+  // Stock.findByPk(req.params.id,{include : User})
+  Promise.all([Stock.findByPk(req.params.id,{include : User}),Accounts.findByPk(req.params.id,{include : User})])
+  .then(([stock,account])=>{
+    // res.send(stock)
+    res.render('stocks/index',{stock,account})
   })
   .catch(err=>{
     res.send(err)
   })
 
+})
+
+router.get("/:id/buy",(req,res)=>{
+  Promise.all([Stock.findByPk(req.params.id,{include : User}),Accounts.findByPk(req.params.id,{include : User})])
+  .then(([stock,account])=>{
+
+    if(account.balance >= stock.buy){
+      account.balance -= stock.buy
+    } else {
+      throw `saldo anda tidak mencukupi`
+    }
+    return account.save()
+  })
+  .then(save=>{
+    render('stocks/buySucces')
+  })
+  .catch(err=>{
+    res.send(err)
+  })
 })
 
 //! add stock
