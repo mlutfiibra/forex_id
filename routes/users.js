@@ -4,10 +4,10 @@ const { accounts, Stock_User, Stock, User } = require('../models')
 
 //! list users
 router.get('/', (req, res) => {
-  // res.send('Halaman User')
   User.findAll()
   .then(users=>{
-    res.send(users)
+    // res.send(users)
+    res.render('users/index', {users})
   })
   .catch(err=>{
     res.send(err)
@@ -16,19 +16,17 @@ router.get('/', (req, res) => {
 
 //! add user
 router.get('/add', (req, res) => {
-  // User.create(
-  //   {
-  //     name: req.body.name,
-  //     email: req.body.email,
-  //     password : req.body.password
-  //   }
-  // )
-  // .then(user =>{
-  //   //! masih belum di handle
-  // })
-  // .catch(err=>{
-  //   res.send(err)
-  // })
+  User.create(
+    {
+      ...req.body
+    }
+  )
+  .then(user =>{
+    res.redirect('/users')
+  })
+  .catch(err=>{
+    res.send(err)
+  })
 })
 
 router.post('/add',(req,res)=>{
