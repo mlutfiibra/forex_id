@@ -1,0 +1,29 @@
+<%- include('../partials/head', {title: 'Landing Page'}) %>
+<%- include('../partials/navbar') %>
+<div>
+    <h1>Register</h1>
+</div>
+
+<div>
+    <%if(err){%>
+    <h4><%= err %></h4>
+    <% } %>
+</div>
+
+<form action="/users/signup" method="post">
+    <div>
+        <label for="name">Full Name :</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <div>
+        <label for="password">Password :</label>
+        <input type="password" id="password" name="password">
+    </div>
+
+    <button type="submit">Create User</button>
+</form>
+<%- include('../partials/footer') %>

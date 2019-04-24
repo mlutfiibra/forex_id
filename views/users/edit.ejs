@@ -1,0 +1,23 @@
+<%- include('../partials/head', {title: 'Landing Page'}) %>
+<%- include('../partials/navbar') %>
+<div>
+    <h1>Edit <%=user.name %></h1>
+</div>
+
+<form action="/users/edit/<%=user.id%>" method="post">
+    <div>
+        <label for="name">Full Name :</label>
+        <input type="text" id="name" name="name" value="<%=user.name %>">
+    </div>
+    <div>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" value="<%=user.email %>">
+    </div>
+    <div>
+        <label for="password">Password :</label>
+        <input type="password" id="password" name="password" value="<%=user.password %>">
+    </div>
+
+    <button type="submit">Update User</button>
+</form>
+<%- include('../partials/footer') %>

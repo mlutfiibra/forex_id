@@ -1,3 +1,46 @@
-<nav>
-    
-</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ls</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <% if(session.role==="Administrator") { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard Admin</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/admin/list-item">Items</a>
+                        <a class="dropdown-item" href="/admin/add-item">Add Item</a>
+                        <a class="dropdown-item" href="/admin/list-bidding">Bidding</a>
+                    </div>
+                </li>
+                <% } else if(session.role==="Member"){ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/checkout">My Stock</a>
+                </li>
+                <% } %>
+            </ul>
+            <div style="margin-right: 7em;">    
+                <% if(!session.name) { %>
+                <a href="/users/signin">
+                    <button type="button" class="btn btn-link">Login</button>
+                </a>
+                <a href="/users/signup">
+                    <button type="button" class="btn btn-link">Register</button>
+                </a>
+                <% } else {%>
+                <span>
+                    Welcome, <%=session.name %>
+                </span>
+                <a href="/users/logout">
+                    <button type="button" class="btn btn-link">Logout</button>
+                </a>
+                <% } %>
+            </div>
+            </ul>
+        </div>
+    </nav>

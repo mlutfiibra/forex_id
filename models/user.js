@@ -49,21 +49,32 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     role: DataTypes.STRING
   }, {
-      hooks:
-      {
-        afterCreate: (user, option) => {
-          user.role = 'Member'
-          return sequelize.models.Accounts.create()
-          .then(vlue=>{
-            // console.log(`berhasil`);
-          })
-        }
+    hooks: {
+      beforeCreate: (user, option) =>{
+        user.role = 'Member'
+      },
+      afterCreate: (user, option) => {
+        sequelize.models.Accounts.create({
+          accountNumber: Math.floor(100000000 + Math.random() * 900000000),
+          balance: 0,
+          userId: user.id
+        })
+      },
+      beforeDestroy: (user, option) => {
+        sequelize.models.Accounts.destroy({
+          where: {
+            userId: user.id
+          }
+        })
       }
-    });
+    }
+  });
+
   User.associate = function (models) {
     // associations can be defined here
     User.belongsToMany(models.Stock, { through: models.Stock_User, foreignKey: 'userId' })
     User.hasOne(models.Accounts, {foreignKey: 'userId'})
   };
+  
   return User;
 };

@@ -11,8 +11,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th>name</th>
-                <th>email</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Balance</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +24,10 @@
                     <%=user.name %>
                 </td>
                 <td><%=user.email %></td>
+                <td><%=user.Account ? user.Account.balance : 0 %></td>
+                <td>
+                    <a href="/users/delete/<%=user.id%>">Delete</a>
+                </td>
             </tr>
             <% })%>
         </tbody>
