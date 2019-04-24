@@ -15,8 +15,23 @@ module.exports = {
     return queryInterface.bulkInsert('Stock', [
       {
         name: 'Bank Mandiri',
-        
-      }], {});
+        alias: 'BAM',
+        buy: 500,
+        sell: 510
+      },
+      {
+        name: 'Bank BCA',
+        alias: 'BCA',
+        buy: 600,
+        sell: 610
+      },
+      {
+        name: 'PT. Indofood',
+        alias: 'IDF',
+        buy: 570,
+        sell: 590
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
