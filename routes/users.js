@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
   .catch(err=>{
     res.send(err)
   })
-
 })
 
 //! add user
@@ -87,14 +86,5 @@ router.get('/delete/:id',(req,res)=>{
     res.send(err)
   })
 })
-
-
-
-
-
-
-
-
-
 
 module.exports = router
