@@ -2,23 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { Accounts, Stock_User, Stock, User } = require('../models')
 
-//! list users
-router.get('/', (req, res) => {
-  User.findAll({
-    order: [['id','ASC']],
-    include: [
-      { model: Accounts}
-    ]
-  })
-  .then(users=>{
-    // res.send(users)
-    res.render('users/index', {users})
-  })
-  .catch(err=>{
-    res.send(err)
-  })
-})
-
 //! add user
 router.get('/signup', (req, res) => {
   res.render('users/signup', {err:''})
@@ -48,12 +31,14 @@ router.post('/signin', (req, res) => {
     if(user!==null) {
       if(user.role==="Administrator") {
         req.session.isLoggedIn = true
+        req.session.userId = user.id
         req.session.name = user.name
         req.session.role = user.role
 
         res.redirect('/')
       }else if(user.role==="Member") {
         req.session.isLoggedIn = true
+        req.session.userId = user.id
         req.session.name = user.name
         req.session.role = user.role
 
@@ -120,6 +105,19 @@ router.get('/logout', (req, res) => {
   req.session.destroy()
 
   res.redirect('/')
+})
+
+router.get('/:id/stocks', (req, res) => {
+  User.findOne(
+    {
+      include: [{model: Stock}],
+      where: {id:req.params.id}
+    }
+  )
+  .then(stockUsers=> {
+    // res.send(stockUsers)
+    res.render('users/stocks', {stockUsers})
+  })
 })
 
 module.exports = router

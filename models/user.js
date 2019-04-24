@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
       type :DataTypes.STRING,
       validate :
       {
-        noEmpty : true,
         isNameUnique(){
           return User.findOne(
             {where : {
