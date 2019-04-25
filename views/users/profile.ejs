@@ -8,7 +8,10 @@
                 <h2 style="display:inline-block;">Welcome, <%=user.name %></h2>
                 <a href="/users/edit/<%=user.id%>" class="btn btn-link">Edit Profile</a>
             </div>
-            <h5 class="color-green mt-5">Balance: <%=numberToRupiah(user.Account.balance) %></h5>
+            <div>
+                <h5 style="display:inline-block;" class="color-green mt-5">Balance: <%=numberToRupiah(user.Account.balance) %></h5>
+                <a href="/users/<%=user.id%>/top-up" class="btn btn-link">Top Up Now</a>
+            </div>
             <h6>Email: <%=user.email %></h6>
         </div>
         <% user.Stocks.forEach(stock => {%>

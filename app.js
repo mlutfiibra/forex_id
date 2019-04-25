@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs')
 
-app.use('/administrator',isAdministrator, administrator)
+app.use('/administrator', administrator)
 app.use('/users', users)
 app.use('/stocks',stocks)
 app.use('/accounts',accounts)

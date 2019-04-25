@@ -129,12 +129,52 @@ router.get('/profile/:id', (req, res) => {
   User.findByPk(req.params.id, {
     include: [
       {model: Stock},
-      {model: Accounts}
+      {
+        model: Accounts,
+        where: {
+          userId: req.params.id
+        }
+      }
+
     ]
   })
   .then(user=> {
     // res.send(user)
     res.render('users/profile', {user})
+  })
+  .catch(err=>{
+    res.send(err)
+  })
+})
+
+router.get('/:id/top-up', (req, res) => {
+  User.findByPk(req.params.id, {
+    include: [{model: Accounts}]
+  })
+  .then(user=> {
+    // res.send(user)
+    res.render('users/top-up', {user})
+  })
+  .catch(err=>{
+    res.send(err)
+  })
+})
+
+router.post('/:id/top-up', (req, res) => {
+  let userId = 0
+  
+  User.findByPk(req.params.id, {
+    include: [{model: Accounts}]
+  })
+  .then(user=> {
+    userId = user.id
+    user.Account.balance=Number(user.Account.balance)+Number(req.body.balance)
+    // res.send(user.Account)
+
+    return user.Account.save()
+  })
+  .then(update => {
+    res.redirect(`/users/profile/${userId}`)
   })
   .catch(err=>{
     res.send(err)

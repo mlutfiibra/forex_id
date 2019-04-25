@@ -1,0 +1,25 @@
+<%- include('../partials/head', {title: 'User List'}) %>
+<%- include('../partials/navbar') %>
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12 mt-25">
+            <h2>Input a balance value</h2>
+            <h3>We will send the balance immediately</h3>
+        </div>
+
+        <div class="col-md-12 mt-25">
+            <h4 class="color-grey4">Your balance:</h4>
+            <h4 class="color-green"><%=numberToRupiah(user.Account.balance) %></h4>
+        </div>
+        
+        <div class="col-md-12 mt-25">
+            <form action="/users/<%=user.id%>/top-up" method="POST">
+                <input type="number" name="balance" id="balance" placeholder="Input balance">
+
+                <input type="submit" class="btn btn-primary" value="Top Up Now">
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>

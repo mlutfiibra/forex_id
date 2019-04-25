@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<head>
- 
-</head>
-<body>
-    <form action="/administrator/add-item" method="POST">
-      Name :<br>
-      <input type="text" name="name" value="">
-      <br>
-      Alias :<br>
-      <input type="text" name="alias" value="">
-      <br>
-      Buy :<br>
-      <input type="text" name="buy" value="">
-      <br>
-      Sell :<br>
-      <input type="text" name="sell" value="">
-      <br>
-      description :<br>
-      <input type="text" name="description" value="">
-      <br>
-      <br><br>
-      <input type="submit" value="Submit">
-    </form> 
-</body>
-</html>
+<%- include('../partials/head', {title: 'Landing Page'}) %>
+<%- include('../partials/navbar') %>
+<div>
+    <h1>Edit <%=stock.name %></h1>
+    <div>
+      <a href="/administrator/list-stocks">List Stock</a>
+    </div>
+</div>
+
+<form action="/administrator/<%=stock.id%>/edit" method="post">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%=stock.name %>">
+    </div>
+    <div>
+        <label for="alias">Alias</label>
+        <input type="text" id="alias" name="alias" value="<%=stock.alias %>">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea id="description" rows="4" cols="50" name="description"><%=stock.description %></textarea>
+    </div>
+    <div>
+        <label for="buy">Buy</label>
+        <input type="text" id="buy" name="buy" value="<%=stock.buy %>">
+    </div>
+    <div>
+        <label for="sell">Sell</label>
+        <input type="text" id="sell" name="sell" value="<%=stock.sell %>">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Stock</button>
+</form>
+<%- include('../partials/footer') %>

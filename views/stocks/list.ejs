@@ -28,8 +28,8 @@
                         <%=stock.name %>
                     </td>
                     <td><%=stock.alias %></td>
-                    <td><%=stock.buy%></td>
-                    <td><%=stock.sell%></td>
+                    <td><%=numberToRupiah(stock.buy)%></td>
+                    <td><%=numberToRupiah(stock.sell)%></td>
                     <td>
                         <a href="/users/<%=idUser%>/buy/stocks/<%=stock.id%>">Buy</a>
                     </td>

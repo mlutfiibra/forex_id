@@ -27,7 +27,7 @@
                         <%=stock.name %>
                     </td>
                     <td><%=stock.alias %></td>
-                    <td><%=stock.sell%></td>
+                    <td><%=numberToRupiah(stock.sell)%></td>
                     <td>
                         <a href="/users/<%= stockUsers.id %>/sell/<%=stock.id%>">Sell</a>
                     </td>

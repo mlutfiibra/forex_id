@@ -57,7 +57,7 @@ router.post('/add', (req, res) => {
 router.get('/:id/edit',(req,res)=>{
   Stock.findByPk(req.params.id)
   .then(stock=>{
-    res.render('stocks/edit')
+    res.render('stocks/edit',{stock})
   })
   .catch(err=>{
     res.send(err)
@@ -77,7 +77,7 @@ router.post('/:id/edit', (req, res) => {
     { where: { id: req.params.id } }
   )
     .then(stock => {
-      res.redirect('/')
+      res.redirect('/administrator/list-stocks')
     })
     .catch(err => {
       res.send(err)
@@ -90,7 +90,7 @@ router.get('/:id/delete',(req,res)=>{
     return stock.destroy()
   })
   .then(stock=>{
-    res.redirect('/')
+    res.redirect('/administrator/list-stocks')
   })
   .catch(err=>{
     res.send(err)
