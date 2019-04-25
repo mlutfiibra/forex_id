@@ -24,6 +24,7 @@
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "node-cron": "^2.0.3",
+    "nodemailer": "^6.1.1",
     "pg": "^7.10.0",
     "sequelize": "^5.7.4"
   }

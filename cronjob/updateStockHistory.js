@@ -10,7 +10,7 @@ cronStockHistory.schedule("* * * * * *", function() {
                 stockId: element.id,
                 buy: Math.floor(Math.random() * (70000 - 60000) + 60000),
                 sell: Math.floor(Math.random() * (70000 - 60000) + 60000)                
-            })
+            }, {stockId: element.id})
         });
     })
     .then()
