@@ -36,17 +36,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
 app.use('/administrator',isAdministrator, administrator)
-app.use('/users', users)
+app.use('/users', isAuth, users)
 app.use('/stocks',stocks)
 app.use('/accounts',accounts)
 app.use('/stock-user',stock_user)
 app.use('/auth', auth)
-// app.use('/users', isAuth, upload.single('img_path'), users)
-// app.use('/admin', isAdmin, admin)
-// app.use('/checkout', isAuth, checkout)
-// app.use('/users', upload.single('img_path'), users)
-// app.use('/items', items)
-// app.use('/biddings', biddings)
+
 app.use('/', routes)
 
 app.listen(PORT, ()=> console.log(`Listening to ${new Date} radio ${PORT} F.M`))
