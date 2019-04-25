@@ -9,11 +9,19 @@
         </div>
        
         <% stocks.forEach(stock => {%>
-        <div class="col-md-12">
+        <div class="col-md-12 mt-15">
             <a href="/stocks/<%=stock.id%>/detail">
             <div class="card">
                 <div class="card-body">
-                    <%=stock.name %>
+                    <div class="color-grey4 fw-500">
+                        <%=stock.name %>
+                        <div class="pull-right fs-23" style="<%=stockConditionInColor(stock.buy, stock.sell)%>">
+                            <%=stock.buy %>
+                        </div>
+                    </div>
+                    <div class="color-grey3 fs-14">
+                        <%=stock.alias %>
+                    </div>
                 </div>
             </div>
             </a>

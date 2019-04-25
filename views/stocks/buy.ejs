@@ -1,25 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/head', {title: 'User List'}) %>
+<%- include('../partials/navbar') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-
-<body>
-  <h1> Stock Name : <%= stock.name %> </h1>
-  <h1> Harga jual stock :<%= stock.buy %> </h1>
-  <h1> Balance Anda :<%= user.Account.balance %> </h1>
-  <% if(stock.buy < user.Account.balance){ %>
-    <form action="/users/<%= user.id %>/buy/stocks/<%= stock.id %>" method="post">
-      <input type="submit" value="buy">
-    </form> 
-    <% } else { %>
-      <h1> mohon maaf balance anda belum mencukupi </h1>
-  <% } %> 
-
-</body>
-
-</html>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12 mt-15">
+            <h2>Buy Stock</h2>
+        </div>
+        <div class="col-md-12 mt-25">
+            <h3> <%= stock.name %> </h3>
+            <h3 class="mt-5"> Stock price :<%= stock.buy %> </h3>
+            <h3 class="mt-5"> Your balance :<%= user.Account.balance %> </h3>
+            <% if(stock.buy < user.Account.balance){ %>
+              <form action="/users/<%= user.id %>/buy/stocks/<%= stock.id %>" method="post">
+                <input type="submit" value="Buy Stock" class="btn btn-danger" style="width: 30%;">
+              </form> 
+              <% } else { %>
+                <h3 class="color-red">You dont have sufficient balance</h3>
+            <% } %> 
+        </div>
+        
+    </div>
+</div>
+<%- include('../partials/footer') %>

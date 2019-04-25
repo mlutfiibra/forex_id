@@ -8,8 +8,8 @@ cronStockHistory.schedule("* * * * * *", function() {
         stocks.forEach(element => {
             return stock_history.create({
                 stockId: element.id,
-                buy: Math.floor(Math.random() * (700 - 600) + 600),
-                sell: Math.floor(Math.random() * (700 - 600) + 600)                
+                buy: Math.floor(Math.random() * (70000 - 60000) + 60000),
+                sell: Math.floor(Math.random() * (70000 - 60000) + 60000)                
             })
         });
     })

@@ -1,0 +1,36 @@
+<%- include('../partials/head', {title: 'My Profile'}) %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Welcome, <%=user.name %></h2>
+            <h5 class="color-green">Balance: <%=numberToRupiah(user.Account.balance) %></h5>
+            <h6>Email: <%=user.email %></h6>
+        </div>
+        <% user.Stocks.forEach(stock => {%>
+        <div class="col-md-12 mt-15">
+            <a href="/stocks/<%=stock.id%>/detail">
+            <div class="card">
+                <div class="card-body">
+                    <div class="color-grey4 fw-500 fs-23">
+                        <%=stock.name %>
+                    </div>
+                    <div class="color-grey3 fs-14">
+                        <%=stock.description %>
+                    </div>
+                    <div class="color-grey4 fs-14 mt-5">
+                        Buy: <%=numberToRupiah(stock.buy) %>
+                    </div>
+                    <div class="color-grey4 fs-14">
+                        Sell: <%=numberToRupiah(stock.sell) %>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+        <% }) %>
+
+    </div>
+</div>
+<%- include('../partials/footer') %>

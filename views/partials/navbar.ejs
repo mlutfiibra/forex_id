@@ -14,29 +14,29 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard Admin</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/administrator/users/">Manage Users</a>
-                        <a class="dropdown-item" href="/admin/add-item">Manage Forex</a>
+                        <a class="dropdown-item" href="/administrator/add-item">Manage Forex</a>
                     </div>
                 </li>
                 <% } else if(session.role==="Member"){ %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/<%=session.userId%>/stocks">My Stock</a>
+                    <a class="nav-link" href="/users/<%=session.userId%>/stocks">Manage Stock</a>
                 </li>
                 <% } %>
             </ul>
             <div style="margin-right: 7em;">    
                 <% if(!session.name) { %>
-                <a href="/users/signin">
+                <a href="/auth/signin">
                     <button type="button" class="btn btn-link">Login</button>
                 </a>
-                <a href="/users/signup">
+                <a href="/auth/signup">
                     <button type="button" class="btn btn-link">Register</button>
                 </a>
                 <% } else {%>
                 <div class="nav-item dropdown" style="display: inline-block">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.name %></a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/users/edit/<%=session.userId %>">Edit Profile</a>
-                        <a class="dropdown-item" href="/users/logout">Logout</a>
+                        <a class="dropdown-item" href="/users/profile/<%=session.userId %>">My Profile</a>
+                        <a class="dropdown-item" href="/auth/logout">Logout</a>
                     </div>
                 </div>
                 <% } %>

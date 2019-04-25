@@ -17,8 +17,8 @@ module.exports = {
         name: 'Bank Mandiri',
         alias: 'BAM',
         description: 'Bank Mandiri adalah bank yang berkantor pusat di Jakarta, dan merupakan bank terbesar di Indonesia dalam hal aset, pinjaman, dan deposit.',
-        buy: 500,
-        sell: 510,
+        buy: 50000,
+        sell: 51000,
         createdAt: new Date,
         updatedAt: new Date
       },
@@ -26,17 +26,35 @@ module.exports = {
         name: 'Bank BCA',
         alias: 'BCA',
         description: 'PT Bank Central Asia Tbk adalah bank swasta terbesar di Indonesia.',
-        buy: 600,
-        sell: 610,
+        buy: 60000,
+        sell: 61000,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
-        name: 'PT. Indofood',
-        alias: 'IDF',
-        description: 'PT. Indofood Sukses Makmur Tbk. (IDX: INDF) dan PT. Indofood CBP Sukses Makmur Tbk.',
-        buy: 570,
-        sell: 590,
+        name: 'Microsoft',
+        alias: 'MSFT',
+        description: 'Microsoft didirikan untuk mengembangkan dan menjual penerjemah BASIC untuk Altair 8800.',
+        buy: 77000,
+        sell: 80000,
+        createdAt: new Date,
+        updatedAt: new Date
+      },
+      {
+        name: 'Google LLC',
+        alias: 'GOOG',
+        description: 'Google LLC[5] adalah sebuah perusahaan multinasional Amerika Serikat yang berkekhususan pada jasa dan produk Internet. ',
+        buy: 83000,
+        sell: 84000,
+        createdAt: new Date,
+        updatedAt: new Date
+      },
+      {
+        name: 'Apple Inc.',
+        alias: 'APPL',
+        description: 'Apple Inc. adalah perusahaan teknologi multinasional yang berpusat di Cupertino, California, yang merancang, mengembangkan, dan menjual barang elektronik konsumen, perangkat lunak komputer, dan layanan daring.',
+        buy: 87000,
+        sell: 89000,
         createdAt: new Date,
         updatedAt: new Date
       }

@@ -27,7 +27,8 @@ router.get("/:id/buy",(req,res)=>{
     return account.save()
   })
   .then(save=>{
-    render('stocks/buySucces')
+    res.send(save)
+    render('stocks/buySucces', {save})
   })
   .catch(err=>{
     res.send(err)
@@ -127,13 +128,13 @@ router.get('/:id/detail', (req, res) => {
     chart = {
         labels: ['1d', '1w', '1m', '3m', '1y'],
         datasets: [{ 
-            data: stockBuy,
+            data: stockBuy.reverse(),
             label: "buy price",
             borderColor: "#3e95cd",
             fill: false
         },
         {
-          data: stockSell,
+          data: stockSell.reverse(),
           label: "sell price",
           borderColor: "#8e5ea2",
           fill: false

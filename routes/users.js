@@ -2,59 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { Accounts, Stock_User, Stock, User } = require('../models')
 
-//! add user
-router.get('/signup', (req, res) => {
-  res.render('users/signup', { err: '' })
-})
-
-router.post('/signup', (req, res) => {
-  User.create({ ...req.body })
-    .then(user => {
-      res.redirect('/')
-    })
-    .catch(err => {
-      res.send(err)
-    })
-})
-
-router.get('/signin', (req, res) => {
-  res.render('users/signin', { err: '' })
-})
-
-router.post('/signin', (req, res) => {
-  User.findOne({
-    where: {
-      email: req.body.email
-    }
-  })
-    .then(user => {
-      if (user !== null) {
-        if (user.checkHashPassword(req.body.password, user)) {
-          if (user.role === "Administrator") {
-            req.session.isLoggedIn = true
-            req.session.userId = user.id
-            req.session.name = user.name
-            req.session.role = user.role
-
-            res.redirect('/')
-          } else if (user.role === "Member") {
-            req.session.isLoggedIn = true
-            req.session.userId = user.id
-            req.session.name = user.name
-            req.session.role = user.role
-
-            res.redirect('/')
-          }
-        } else {
-          res.render('users/signin', { err: 'Wrong password' })
-        }
-      } else {
-        res.render('users/signin', { err: 'Wrong email' })
-      }
-    })
-})
-
-//! edit
 router.get('/edit/:id', (req, res) => {
   User.findByPk(req.params.id)
     .then(user => {
@@ -95,12 +42,6 @@ router.get('/delete/:id', (req, res) => {
     })
 })
 
-router.get('/logout', (req, res) => {
-  req.session.destroy()
-
-  res.redirect('/')
-})
-
 router.get('/:id/stocks', (req, res) => {
   // res.send(req.session)
   User.findOne(
@@ -136,7 +77,7 @@ router.get('/:id/buy/stocks/:stockId', (req, res) => {
   // res.send(req.params)
   Promise.all([User.findByPk(req.params.id, { include: Accounts }), Stock.findByPk(req.params.stockId)])
     .then(([user, stock]) => {
-      res.render('stocks/buy.ejs', { user, stock })
+      res.render('stocks/buy', { user, stock })
     })
     .catch(err => {
       res.send(err)
@@ -155,7 +96,7 @@ router.post('/:id/buy/stocks/:stockId', (req, res) => {
         stockId: req.params.stockId,
         userId: req.params.id
       })
-      res.render('stocks/buySucces.ejs')
+      res.render('stocks/buySucces.ejs', {user})
     })
     .catch(err => {
       res.send(err)
@@ -176,12 +117,28 @@ router.get('/:id/sell/:stockId', (req, res) => {
           userId: req.params.id
         }
       })
-
-      res.render('stocks/sellSucces.ejs')
+      // res.send(user)
+      res.render('stocks/sellSucces.ejs', {user})
     })
     .catch(err => {
       res.send(err)
     })
+})
+
+router.get('/profile/:id', (req, res) => {
+  User.findByPk(req.params.id, {
+    include: [
+      {model: Stock},
+      {model: Accounts}
+    ]
+  })
+  .then(user=> {
+    // res.send(user)
+    res.render('users/profile', {user})
+  })
+  .catch(err=>{
+    res.send(err)
+  })
 })
 
 module.exports = router
