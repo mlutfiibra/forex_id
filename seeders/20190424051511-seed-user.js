@@ -16,7 +16,7 @@ module.exports = {
       {
         name: 'Admin',
         email: 'admin@forex.com',
-        password: '1234',
+        password: '$2y$10$kOEgIm7Da5qdZ3gZv0IYmeFMsGUwcTZ.zRaUb3kW7zEvmX4d1UObm',
         role: 'Administrator',
         createdAt: new Date,
         updatedAt: new Date
@@ -24,7 +24,7 @@ module.exports = {
       {
         name: 'Dienul',
         email: 'dienul@forex.com',
-        password: '1234',
+        password: '$2y$10$kOEgIm7Da5qdZ3gZv0IYmeFMsGUwcTZ.zRaUb3kW7zEvmX4d1UObm',
         role: 'Member',
         createdAt: new Date,
         updatedAt: new Date
@@ -32,7 +32,7 @@ module.exports = {
       {
         name: 'Lutfi',
         email: 'lutfi@forex.com',
-        password: '1234',
+        password: '$2y$10$kOEgIm7Da5qdZ3gZv0IYmeFMsGUwcTZ.zRaUb3kW7zEvmX4d1UObm',
         role: 'Member',
         createdAt: new Date,
         updatedAt: new Date

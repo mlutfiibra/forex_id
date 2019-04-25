@@ -10,7 +10,6 @@ const stock_user = require('./routes/stock_user')
 const administrator = require('./routes/administrator')
 const accounts = require('./routes/accounts')
 const index = require('./routes/index')
-
 const isAuth = require('./middlewares/isAuth')
 const isAdministrator = require('./middlewares/isAdministrator')
 const mySession = {
@@ -29,7 +28,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs')
-
 
 app.use('/users', users)
 app.use('/stocks',stocks)

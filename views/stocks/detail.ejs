@@ -1,0 +1,36 @@
+<%- include('../partials/head', {title: 'Stock Detail'}) %>
+<%- include('../partials/navbar') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4><%=stock.alias %> History</h4>
+        </div>
+
+        <div style="margin: 0 auto;">
+            <canvas id="line-chart" width="800" height="450"></canvas>
+        </div>
+
+        <div>
+            <h6><%=stock.description %></h6>
+        </div>
+    </div>
+</div>
+<script>
+    const chartJs = JSON.parse('<%- JSON.stringify(chart) %>')
+    const chartText = JSON.parse('<%- JSON.stringify(stock.name) %>')
+
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: chartJs,
+        options: {
+            title: {
+            display: true,
+            text: chartText
+            }
+        }
+    });
+
+</script>
+<%- include('../partials/footer') %>

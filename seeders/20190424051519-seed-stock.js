@@ -16,6 +16,7 @@ module.exports = {
       {
         name: 'Bank Mandiri',
         alias: 'BAM',
+        description: 'Bank Mandiri adalah bank yang berkantor pusat di Jakarta, dan merupakan bank terbesar di Indonesia dalam hal aset, pinjaman, dan deposit.',
         buy: 500,
         sell: 510,
         createdAt: new Date,
@@ -24,6 +25,7 @@ module.exports = {
       {
         name: 'Bank BCA',
         alias: 'BCA',
+        description: 'PT Bank Central Asia Tbk adalah bank swasta terbesar di Indonesia.',
         buy: 600,
         sell: 610,
         createdAt: new Date,
@@ -32,6 +34,7 @@ module.exports = {
       {
         name: 'PT. Indofood',
         alias: 'IDF',
+        description: 'PT. Indofood Sukses Makmur Tbk. (IDX: INDF) dan PT. Indofood CBP Sukses Makmur Tbk.',
         buy: 570,
         sell: 590,
         createdAt: new Date,

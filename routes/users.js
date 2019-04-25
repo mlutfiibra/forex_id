@@ -114,7 +114,7 @@ router.get('/:id/stocks', (req, res) => {
       res.render('users/stocks', { stockUsers })
     })
     .catch(err => {
-      err
+      res.send(err)
     })
 })
 
@@ -183,8 +183,5 @@ router.get('/:id/sell/:stockId', (req, res) => {
       res.send(err)
     })
 })
-
-
-
 
 module.exports = router

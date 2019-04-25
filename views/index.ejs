@@ -7,82 +7,19 @@
         <div class="col-md-12">
             <h2>Forex Id</h2>
         </div>
-
-        <div style="margin: 0 auto;">
-            <canvas id="line-chart" width="800" height="450"></canvas>
+       
+        <% stocks.forEach(stock => {%>
+        <div class="col-md-12">
+            <a href="/stocks/<%=stock.id%>/detail">
+            <div class="card">
+                <div class="card-body">
+                    <%=stock.name %>
+                </div>
+            </div>
+            </a>
         </div>
+        <% }) %>
 
     </div>
 </div>
-
-<script>
-    // $( document ).ready(function() {
-    //     $.ajax ({ url: '../price_history.json', method: "GET"})
-    //     .success(function (response) {
-    //         var json = $.parseJSON (response);
-    //         console.log(json);
-    //     });
-    // });
-
-
-    new Chart(document.getElementById("line-chart"), {
-        type: 'line',
-        data: {
-            labels: ['1d', '1w', '1m', '3m', '1y', '5y'], //get by stock table
-            datasets: [{ 
-                data: [86,114,106,106,107,111,133,221,783,2478],
-                label: "Astra",
-                borderColor: "#3e95cd",
-                fill: false
-            }
-            ]
-        },
-        options: {
-            title: {
-            display: true,
-            text: 'ASII \nAstra International Tbk.'
-            }
-        }
-        });
-
-    // new Chart(document.getElementById("mixed-chart"), {
-    //     type: 'bar',
-    //     data: {
-    //     labels: ["1900", "1950", "1999", "2050"],
-    //     datasets: [{
-    //         label: "Europe",
-    //         type: "line",
-    //         borderColor: "#8e5ea2",
-    //         data: [408,547,675,734],
-    //         fill: false
-    //         }, {
-    //         label: "Africa",
-    //         type: "line",
-    //         borderColor: "#3e95cd",
-    //         data: [133,221,783,2478],
-    //         fill: false
-    //         }, {
-    //         label: "Europe",
-    //         type: "bar",
-    //         backgroundColor: "rgba(0,0,0,0.2)",
-    //         data: [408,547,675,734],
-    //         }, {
-    //         label: "Africa",
-    //         type: "bar",
-    //         backgroundColor: "rgba(0,0,0,0.2)",
-    //         backgroundColorHover: "#3e95cd",
-    //         data: [133,221,783,2478]
-    //         }
-    //     ]
-    //     },
-    //     options: {
-    //     title: {
-    //         display: true,
-    //         text: 'Population growth (millions): Europe & Africa'
-    //     },
-    //     legend: { display: false }
-    //     }
-    // });
-
-</script>
 <%- include('./partials/footer') %>
