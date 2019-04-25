@@ -21,5 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     stock_history.belongsTo(models.Stock, {foreignKey: 'stockId'})
   };
+
+  stock_history.generateRandomPrice = function() {
+    return Math.floor(Math.random() * (80000 - 70000) + 70000)
+  }
+
   return stock_history;
 };
