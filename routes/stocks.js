@@ -37,19 +37,7 @@ router.get("/:id/buy",(req,res)=>{
 
 //! add stock
 router.get('/add', (req, res) => {
-  // Stock.create(
-  //   {
-  //     name: req.body.name,
-  //     email: req.body.email,
-  //     password : req.body.password
-  //   }
-  // )
-  // .then(stock =>{
-  //   //! masih belum di handle
-  // })
-  // .catch(err=>{
-  //   res.send(err)
-  // })
+  res.render('stocks/add')
 })
 
 router.post('/add',(req,res)=>{
@@ -58,11 +46,13 @@ router.post('/add',(req,res)=>{
       name: req.body.name,
       alias: req.body.alias,
       buy : req.body.buy,
-      sell : req.body.sell
+      sell : req.body.sell,
+      description : req.body.description
     }
   )
   .then(stock =>{
     //! masih belum di handle
+    //! redirect ke /add-item
   })
   .catch(err=>{
     res.send(err)
