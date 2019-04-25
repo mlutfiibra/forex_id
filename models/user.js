@@ -1,6 +1,8 @@
 'use strict';
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
+const bcrypt = require('bcryptjs')
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     name: 
@@ -8,7 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       type :DataTypes.STRING,
       validate :
       {
-        noEmpty : true,
         isNameUnique(){
           return User.findOne(
             {where : {
@@ -50,8 +51,12 @@ module.exports = (sequelize, DataTypes) => {
     role: DataTypes.STRING
   }, {
     hooks: {
+      afterBulkCreate(user, options) {
+        user.generateHash()
+      },
       beforeCreate: (user, option) =>{
         user.role = 'Member'
+        user.generateHash()
       },
       afterCreate: (user, option) => {
         sequelize.models.Accounts.create({
@@ -75,6 +80,17 @@ module.exports = (sequelize, DataTypes) => {
     User.hasOne(models.Accounts, {foreignKey: 'userId'})
     User.hasMany(models.Stock_User, {foreignKey: 'userId'})
   };
+
+  User.prototype.generateHash = function() {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(this.password, salt);
+    this.salt = salt;
+    this.password = hash;
+  }
+
+  User.prototype.checkHashPassword = function(password, user) {
+    return bcrypt.compareSync(password, user.password);
+  }
   
   return User;
 };

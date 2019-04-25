@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const {Accounts,Stock_User,Stock,User} = require('../models')
 
-
 router.get('/:id', (req, res) => {
   // Stock.findByPk(req.params.id,{include : User})
   Promise.all([Stock.findByPk(req.params.id,{include : User}),Accounts.findByPk(req.params.id,{include : User})])

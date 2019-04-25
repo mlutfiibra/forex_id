@@ -33,7 +33,7 @@ app.set('view engine', 'ejs')
 
 app.use('/users', users)
 app.use('/stocks',stocks)
-app.use('/administrator',administrator)
+app.use('/administrator',isAdministrator, administrator)
 app.use('/accounts',accounts)
 app.use('/stock-user',stock_user)
 // app.use('/auth', auth)

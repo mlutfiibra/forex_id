@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {accounts,Stock_User,Stock,User} = require('../models')
+const { Accounts, Stock_User, Stock, User } = require('../models')
 
 
 router.get('/',(req,res)=>{

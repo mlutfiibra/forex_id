@@ -13,14 +13,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dashboard Admin</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/admin/list-item">Items</a>
-                        <a class="dropdown-item" href="/admin/add-item">Add Item</a>
-                        <a class="dropdown-item" href="/admin/list-bidding">Bidding</a>
+                        <a class="dropdown-item" href="/administrator/users/">Manage Users</a>
+                        <a class="dropdown-item" href="/admin/add-item">Manage Forex</a>
                     </div>
                 </li>
                 <% } else if(session.role==="Member"){ %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/checkout">My Stock</a>
+                    <a class="nav-link" href="/users/<%=session.userId%>/stocks">My Stock</a>
                 </li>
                 <% } %>
             </ul>
@@ -33,12 +32,13 @@
                     <button type="button" class="btn btn-link">Register</button>
                 </a>
                 <% } else {%>
-                <span>
-                    Welcome, <%=session.name %>
-                </span>
-                <a href="/users/logout">
-                    <button type="button" class="btn btn-link">Logout</button>
-                </a>
+                <div class="nav-item dropdown" style="display: inline-block">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.name %></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/users/edit/<%=session.userId %>">Edit Profile</a>
+                        <a class="dropdown-item" href="/users/logout">Logout</a>
+                    </div>
+                </div>
                 <% } %>
             </div>
             </ul>
