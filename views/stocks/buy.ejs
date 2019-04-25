@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1> Stock Name : <%= stock.name %> </h1>
+  <h1> Harga jual stock :<%= stock.buy %> </h1>
+  <h1> Balance Anda :<%= user.Account.balance %> </h1>
+  <% if(stock.buy < user.Account.balance){ %>
+    <form action="/users/<%= user.id %>/buy/stocks/<%= stock.id %>" method="post">
+      <input type="submit" value="buy">
+    </form> 
+    <% } else { %>
+      <h1> mohon maaf balance anda belum mencukupi </h1>
+  <% } %> 
+
+</body>
+
+</html>

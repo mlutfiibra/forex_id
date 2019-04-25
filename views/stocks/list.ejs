@@ -8,10 +8,9 @@
             <h2>My Stock</h2>
         </div>
         <div class="col-md-12">
-            <a href="/users/<%= stockUsers.id %>/buy">Buy Stock</a>
+            <!-- <a href="/users/signup">Buy Stock</a> -->
         </div>
-        <% if(stockUsers!=={}) { %>
-        <table class="table">   
+        <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -21,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% stockUsers.Stocks.forEach(stock =>{ %>
+                <% Stocks.forEach(stock =>{ %>
                 <tr>
                     <td>
                         <%=stock.name %>
@@ -29,17 +28,15 @@
                     <td><%=stock.alias %></td>
                     <td><%=stock.sell%></td>
                     <td>
-                        <a href="/users/<%= stockUsers.id %>/sell/<%=stock.id%>">Sell</a>
+                        <a href="/users/<%=idUser%>/buy/stocks/<%=stock.id%>">Buy</a>
                     </td>
                 </tr>
                 <% })%>
             </tbody>
         </table>
-        <% } else { %>
         <div>
-            <h3>No Stock</h3>
+            <!-- <h3>No Stock</h3> -->
         </div>
-        <% } %>
     </div>
 </div>
 <%- include('../partials/footer') %>
