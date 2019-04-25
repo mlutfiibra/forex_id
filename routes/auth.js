@@ -16,7 +16,7 @@ router.post('/signup', (req, res) => {
             res.redirect('/')
         })
         .catch(err => {
-            res.send(err)
+            res.render('auth/signup', {err})
         })
 })
 

@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
 app.use('/administrator',isAdministrator, administrator)
-app.use('/users', isAuth, users)
+app.use('/users', users)
 app.use('/stocks',stocks)
 app.use('/accounts',accounts)
 app.use('/stock-user',stock_user)

@@ -22,16 +22,16 @@ router.get("/:id/buy",(req,res)=>{
     if(account.balance >= stock.buy){
       account.balance -= stock.buy
     } else {
-      throw `saldo anda tidak mencukupi`
+      throw `You dont have enough balance`
     }
     return account.save()
   })
   .then(save=>{
     res.send(save)
-    render('stocks/buySucces', {save})
+    render('stocks/buySucces', {save, err:''})
   })
   .catch(err=>{
-    res.send(err)
+    res.render('stocks/buySucces', {err})
   })
 })
 
