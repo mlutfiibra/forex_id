@@ -29,34 +29,28 @@ router.post('/signin', (req, res) => {
   })
   .then(user => {
     if(user!==null) {
-      if(user.role==="Administrator") {
-        req.session.isLoggedIn = true
-        req.session.userId = user.id
-        req.session.name = user.name
-        req.session.role = user.role
-
-        res.redirect('/')
-      }else if(user.role==="Member") {
-        req.session.isLoggedIn = true
-        req.session.userId = user.id
-        req.session.name = user.name
-        req.session.role = user.role
-
-        res.redirect('/')
+      if(user.checkHashPassword(req.body.password, user)) {
+        if(user.role==="Administrator") {
+          req.session.isLoggedIn = true
+          req.session.userId = user.id
+          req.session.name = user.name
+          req.session.role = user.role
+  
+          res.redirect('/')
+        }else if(user.role==="Member") {
+          req.session.isLoggedIn = true
+          req.session.userId = user.id
+          req.session.name = user.name
+          req.session.role = user.role
+  
+          res.redirect('/')
+        }
+      }else{
+      res.render('users/signin', {err:'Wrong password'})
       }
     }else { 
       res.render('users/signin', {err:'Wrong email'})
     }
-  })
-})
-
-router.post('/signup',(req,res)=>{
-  User.create({...req.body})
-  .then(user =>{
-    res.redirect('/')
-  })
-  .catch(err=>{
-    res.send(err)
   })
 })
 
