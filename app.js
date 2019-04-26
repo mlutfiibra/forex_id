@@ -7,9 +7,7 @@ const nodemailer = require('nodemailer');
 const session = require('express-session')
 const users = require('./routes/users')
 const stocks = require('./routes/stocks')
-const stock_user = require('./routes/stock_user')
 const administrator = require('./routes/administrator')
-const accounts = require('./routes/accounts')
 const auth = require('./routes/auth')
 const isAuth = require('./middlewares/isAuth')
 const isAdministrator = require('./middlewares/isAdministrator')
@@ -51,11 +49,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs')
 
-app.use('/administrator', administrator)
-app.use('/users', users)
+app.use('/administrator', isAdministrator, administrator)
+app.use('/users', isAuth, users)
 app.use('/stocks',stocks)
-app.use('/accounts',accounts)
-app.use('/stock-user',stock_user)
 app.use('/auth', auth)
 
 app.use('/', routes)

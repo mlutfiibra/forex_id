@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   stock_history.generateRandomPrice = function() {
-    return Math.floor(Math.random() * (80000 - 70000) + 70000)
+    return Math.floor(Math.random() * (100000 - 90000) + 90000)
   }
 
   return stock_history;

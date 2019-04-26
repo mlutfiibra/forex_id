@@ -2,7 +2,6 @@ const cronStockHistory = require("node-cron")
 const { Stock, stock_history } = require('../models')
 
 cronStockHistory.schedule("* * * * * *", function() {
-    console.log("running a task every minute");
     Stock.findAll()
     .then(stocks=>{
         stocks.forEach(element => {
